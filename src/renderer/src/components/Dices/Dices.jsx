@@ -63,8 +63,28 @@ function Dices() {
      };
 
   return (
-    <div>Dices</div>
-  )
+    <>
+    <div className='dice-wrapper'>
+    <div className='dice-area'>
+      <p>Jogador 1</p>
+      <img src={dados1} ref={user1} alt="Dice" />
+    </div>
+    <div className='dice-area'>
+      <p>Jogador 2</p>
+      <img src={dados1} ref={user2} alt="Dice" />
+    </div>
+    </div>
+    <p className="result" ref={resultDice}>{result}</p>
+    <button className="btn" onClick={roll}>Rolar os dados</button>
+    <button className="btn reset">Limpar</button>
+    <h2 ref={titleHistoryResult}>Historico</h2>
+    <ul>
+      {history.map((item) => (
+        <li key={item.id}>{item.value}</li>
+      ))}
+    </ul>
+    </>
+  );
 }
 
 export default Dices

@@ -35,8 +35,7 @@ function Dices() {
             value: `O jogador 1 venceu com ${firstRandomNum + 1} pontos`,
           },
         ])
-      }
-      if (firstRandomNum < secundRandomNum) {
+      } else if (firstRandomNum < secundRandomNum) {
         setResult(`O Vencedor foi o jogador 2 com ${secundRandomNum + 1} pontos`);
         setHistory([
           ...history,
@@ -44,9 +43,24 @@ function Dices() {
             id: history.length,
             value: `O jogador 2 venceu com ${secundRandomNum + 1} pontos`,
           },
-        ])
+        ]);
+      } else {
+        setResult('Deu empate!');
+        setHistory([
+          ...history,
+          {
+            id: history.length,
+            value: `Deu empate! Ambos jogadores ficaram com ${firstRandomNum + 1} pontos`,
+          },
+        ]);
       }
-     }
+      user1.current.setAttribute('src', diceImages [firstRandomNum]);
+      user2.current.setAttribute('src', diceImages [secundRandomNum]);
+     };
+     
+     const reset = () => {
+      setHistory([]);
+     };
 
   return (
     <div>Dices</div>
